@@ -1,0 +1,22 @@
+.main {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  /* grid-template-columns: 300px 300px;
+  grid-auto-rows: auto; */
+  gap: 35px;
+
+  color: #010101;
+
+  /* width: calc(300px + 450px + 300px + (2 * 35px)); */
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border: 2px solid yellowgreen;
+}

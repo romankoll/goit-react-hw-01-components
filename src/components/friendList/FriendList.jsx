@@ -1,12 +1,20 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import css from 'components/friendList/FriendList.module.css';
+import { FaDog } from 'react-icons/fa';
 
 export const FriendList = ({ friends }) => {
-  //   const { avatar, name, isOnline } = friends;
+  const getIconColor = isOnline => {
+    return isOnline ? 'green' : 'red';
+  };
+
   return (
-    <ul className="friend-list">
+    <ul className={css.friendList}>
       {friends.map(friend => (
-        <li className="item" key={friend.name}>
-          <span className="status">{friend.isOnline}</span>
+        <li className={css.item} key={friend.id}>
+          <FaDog
+            className={css.icon}
+            style={{ color: getIconColor(friend.isOnline) }}
+          />
           <img
             className="avatar"
             src={friend.avatar}
@@ -18,4 +26,15 @@ export const FriendList = ({ friends }) => {
       ))}
     </ul>
   );
+};
+
+FriendList.propTypes = {
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      isOnline: PropTypes.bool.isRequired,
+    })
+  ),
 };
